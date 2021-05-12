@@ -286,6 +286,12 @@ namespace Pixeye.Actors
       removed = new ents(LayerKernel.Settings.SizeEntities);
 #endif
       length = 0;
+     
+      for (var i = 0; i < composition.excluded.Length; i++)
+      {
+        ref var m = ref composition.excluded[i];
+        Storage.All[m.id].groups[layer.id].Remove(this);
+      }
 
       //parallel
       if (segmentGroups != null)
